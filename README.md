@@ -2,6 +2,8 @@
 xmonad.hs ~/.xmonad
 .xmobarrc  ~/.xmobarrc
 
+xmonad --recompile
+
 
 #设置中文显示
 export LANG=zh_CN.UTF-8
