@@ -53,12 +53,17 @@ main = do
                  , borderWidth = 4
                  , focusedBorderColor = "#FF0000"
                 } `additionalKeysP` myKeys
-
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 myKeys = [  (("M1-f"), spawn "firefox")
            ,(("M1-p"), spawn "dmenu_run")
            ,(("M1-c"), spawn "google-chrome-stable")
-	       ,(("M1-<Return>"), windows $ W.swapDown . W.focusUp)
+	   ,(("M1-<Return>"), windows $ W.swapDown . W.focusUp)
            ,(("M1-z"), kill)
+         ] ++
+         [ (otherModMasks ++ "M-" ++ [key], action tag)
+                | (tag, key)  <- zip myWorkspaces "123456789"
+                , (otherModMasks, action) <- [ ("", windows . W.view) -- was W.greedyView
+                                                , ("S-", windows . W.shift)]
          ]
 
 myDoFullFloat :: ManageHook
