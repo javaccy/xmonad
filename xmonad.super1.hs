@@ -60,10 +60,9 @@ myKeys = [  (("M4-f"), spawn "firefox")
 	   ,(("M4-<Return>"), windows $ W.swapDown . W.focusUp)
            ,(("M4-z"), kill)
          ] ++
-         [ (otherModMasks ++ "M-" ++ [key], action tag)
-                         | (tag, key)  <- zip myWorkspaces "123456789"
-                         , (otherModMasks, action) <- [ ("", windows . W.view) -- was W.greedyView
-                                                         , ("S-", windows . W.shift)]
+         [((m .|. mod1Mask, k), windows $ f i) -- Replace 'mod1Mask' with your mod key of choice.
+               | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+               , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
          ]
 
 myDoFullFloat :: ManageHook
