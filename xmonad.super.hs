@@ -58,6 +58,7 @@ myKeys = [  (("M4-f"), spawn "firefox")
            ,(("M4-p"), spawn "dmenu_run")
            ,(("M4-c"), spawn "google-chrome-stable")
 	   ,(("M4-<Return>"), windows $ W.swapDown . W.focusUp)
+	   ,(("M4-<Return>"), windows $ W.swapUp . W.focusDown)
            ,(("M4-z"), kill)
          ] ++
          [ (otherModMasks ++ "M-" ++ [key], action tag)
