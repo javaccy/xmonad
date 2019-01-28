@@ -55,10 +55,13 @@ main = do
                 } `additionalKeysP` myKeys
 
 myKeys = [  (("M4-f"), spawn "firefox")
-           ,(("M4-p"), spawn "dmenu_run")
+--           ,(("M4-p"), spawn "dmenu_run")
+           ,(("M4-p"), spawn "rofi -show run")
+           ,(("M4-S-p"), spawn "rofi rofi -combi-modi window,drun -show combi -modi combi")
+           ,(("M4-S-v"), spawn "clipmenu -i ")
            ,(("M4-c"), spawn "google-chrome-stable")
-	   ,(("M4-<Return>"), windows $ W.swapDown . W.focusUp)
-	   ,(("M4-S-<Return>"), windows $ W.swapUp . W.focusDown)
+           ,(("M4-<Return>"), windows $ W.swapDown . W.focusUp)
+           ,(("M4-S-<Return>"), windows $ W.focusDown . W.swapUp)
            ,(("M4-z"), kill)
          ] ++
          [ (otherModMasks ++ "M-" ++ [key], action tag)
